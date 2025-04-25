@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciador de Gastos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="title">
+        <h1>Gerenciador de Gastos</h1>
+    </div>
+    
+    <div class="info">
+        
+        <h2>Total de Despesas: R$ {{ total_gasto }}</h2>
+        <form action="{{url_for('add_gastos')}}" method="POST">
+            <input type="date" name="data" placeholder="Data" required>
+            <input type="text" name="categoria" placeholder="Categoria" required>
+            <input type="number" name="valor" placeholder="Valor Gastos" required step="0.01" min="0">
+            <input type="text" name="descricao" placeholder="Descricao" required>
+            <button type="submit">Adicionar</button>
+        </form>
+        
+        
+        <div class="grid-container">
+            <div class="graph-item">
+                {{ graph_html|safe }}
+            </div>
+            
+            <div class="graph-item">
+                {{ graph_html2|safe }}
+            </div>
+        </div>
+        <br>
+        <h3>Despesas Adicionadas:</h3>
+        <br>
+
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Categoria</th>
+                    <th>Valor</th>
+                    <th>Descrição</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for gasto in gastos %}
+                <tr>
+                    <td>{{ gasto.data }}</td>
+                    <td>{{ gasto.categoria }}</td>
+                    <td>R$ {{ gasto.valor }}</td>
+                    <td>{{ gasto.descricao }}</td>
+                    <td>
+                        <form action="{{ url_for('remover_gasto', id=gasto.id) }}" method="POST">
+                            <button class="btn-remover" type="submit">Remover</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <br>
+
+    </div>
+</body>
+</html>
