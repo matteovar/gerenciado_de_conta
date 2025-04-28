@@ -95,3 +95,14 @@ gerenciador-gastos/
 └── README.md              # Este arquivo.
 ```
 
+# Imagens do Sistema
+
+<img src="assets/screen.png" alt="Tela sem conteudo">
+<span style="font-style: italic;">Tela sem Conteudo</span></p>
+
+<img src="assets/screen2.png" alt="Tela com valores">
+<span style="font-style: italic;">Tela com valores adicionaods.</span></p>
+
+<img src="assets/postgre.png" alt="Postgre_image">
+<span style="font-style: italic;">Tela do Postgre com as informacoes.</span></p>
+
